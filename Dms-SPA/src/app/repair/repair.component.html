@@ -1,0 +1,35 @@
+<div class="header_02">Repair Home</div>
+
+<div class="margin_bottom_20"></div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a [routerLink]="['/repairDashboard']" class="">            
+            <img src="../../assets/images/dashboard.png" alt="" class="img-fluid w-75 mb-3">
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a (click)="openFLCModal()" class="">            
+            <img src="../../assets/images/newEstimate.png" alt="" class="img-fluid w-75 mb-3">
+        </a>    
+        <!-- <a [routerLink]="['/repairNew']" class="">            
+            <img src="../../assets/images/newEstimate.png" alt="" class="img-fluid w-75 mb-3">
+        </a> -->   
+
+    </div>
+
+    <div class="col-md-4">
+        <a [routerLink]="['/repairFind']" class="">            
+            <img src="../../assets/images/findEstimate.png" alt="" class="img-fluid w-75 mb-3">
+        </a>        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a [routerLink]="['/repairProductivity']" class="">            
+            <img src="../../assets/images/production.png" alt="" class="img-fluid w-75 mb-3">
+        </a>
+    </div>
+</div>

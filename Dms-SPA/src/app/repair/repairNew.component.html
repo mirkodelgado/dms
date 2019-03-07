@@ -1,0 +1,285 @@
+<div class="header_02">{{ equipTypeEstimate }}</div>
+
+<div class="margin_bottom_20"></div>
+
+<div class="tab-panel">
+    <tabset class="member-tabset" #staticTabs>
+      <tab heading="Header">
+
+        <div class="margin_bottom_20"></div>
+
+        <div class="form-row">
+          <div class="col-md-4">
+            <h5><label>Facility: </label> {{ facilityName }}</h5>    
+          </div>
+
+          <div class="col-md-4">
+            <h5><label>Location: </label> {{ locationName }}</h5>    
+          </div>
+
+          <div class="col-md-4">
+            <h5><label>Client: </label> {{ billToName }}</h5>
+          </div>
+        </div>
+
+        <div class="form-row form-inline">
+          <div class="col-md-4">
+              <div class="form-group">
+                <h5><label class="mr-sm-2" >Estimate: </label></h5>
+                <h5><label class="mr-sm-2 pr-sm-2">WANN123456</label></h5>
+                <select name="estimateRevision" id="estimateRevision" class="form-control mr-sm-2 mb-sm-2">
+                    <option>0</option>
+                </select>            
+                <span class="fa fa-question-circle" tooltip="estimate revision" placement="top"></span>    
+              </div>
+          </div>
+
+          <div class="col-md-4">
+              <div class="form-group">
+                  <h5><label class="mr-sm-2">Input Date: </label></h5>
+                  <h5><label class="mr-sm-2">{{ currDate | date: 'MM/dd/yyyy hh:mm a' }} </label> </h5>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+              <div class="form-group">
+                  <h5><label class="mr-sm-2">Issued By: </label></h5>
+                  <h5><label class="mr-sm-2">Newport </label> </h5>
+              </div>
+          </div>
+        </div>
+
+        <div class="margin_bottom_20"></div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="estimateDate">Estimate Date</label>
+              <input type="text" class="form-control" [bsConfig]= "{ containerClass: 'theme-dark-blue' }" bsDatepicker />   
+          </div>
+          <div class="form-group col-md-6">
+              <label for="repairDate">Repair Date</label>
+              <input type="text" class="form-control mr-sm-2 mb-sm-2" [bsConfig]= "{ containerClass: 'theme-dark-blue' }" bsDatepicker />
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="equipmentID">Equipment ID</label>
+              <input type="text" class="form-control" id="equipmentID">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="relatedID">Related ID</label>
+                <input type="text" class="form-control" id="relatedID">
+              </div>
+            <div class="form-group col-md-2">
+              <label for="gensetHours">Genset Hours</label>
+              <input type="number" class="form-control" id="gensetHours">
+            </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="mechanic">Mechanic</label>
+              <select id="mechanic" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+          <div class="form-group col-md-6">
+              <label for="sendTo">Send To</label>
+              <select id="sendTo" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+        </div>
+
+
+        <div class="form-row" *ngIf="isChassis()">
+            <div class="form-group col-md-6">
+              <label for="fhwaAuthorization">FHWA Authorization</label>
+              <input type="text" class="form-control" id="fhwaAuthorization">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="repairReason">Repair Reason</label>
+              <select id="repairReason" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+        </div>
+        
+        <div class="form-row" *ngIf="isContainer()">
+            <div class="form-group col-md-6">
+              <label for="vessel">Vessel</label>
+              <input type="text" class="form-control" id="vessel">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="voyage">Voyage</label>
+                <input type="text" class="form-control" id="voyage">
+              </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea type="text" class="form-control" rows="3" id="comments"></textarea>
+        </div>
+
+
+        <button class="btn btn-primary btn-default">Next >>></button>
+        
+
+      </tab>
+      <tab heading="Detail">
+
+        <div class="margin_bottom_20"></div>
+
+        <div class="row">
+
+          <div class="col-md-8">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="repairCategory">Repair Category</label>
+                  <select id="repairCategory" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="repairDescription">Repair Description</label>
+                  <select id="repairDescription" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="repairSize">Size</label>
+                    <input type="number" class="form-control" id="repairSize">
+                </div>
+                <div class="form-group col-md-6">
+                      <label for="repairReason">Unit Of Measure</label>
+                      <select id="repairReason" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="repairReason">Repair Reason</label>
+                  <select id="repairReason" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+    
+                <div class="form-group col-md-6">
+                  <label for="repairLocation">Repair Location</label>
+                  <select id="repairLocation" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+            </div>
+
+            <!-- <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="repairResponsibility">Responsibility</label>
+                  <select id="repairResponsibility" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="repairMechanic">Mechanic</label>
+                  <select id="repairMechanic" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>  
+            </div> -->
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="repairQuantity">Repair Qty</label>
+                  <input type="number" class="form-control" id="repairQuantity">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="repairHours">Repair Hours</label>
+                    <input type="number" class="form-control" id="repairHours">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="repairRate">Rate</label>
+                    <input type="number" class="form-control" id="repairRate">
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label for="repairLabor">Labor</label>
+                      <input type="number" class="form-control" id="repairLabor">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="repairQuantity">Part Qty</label>
+                  <input type="number" class="form-control" id="repairQuantity">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="repairPart">Part</label>
+                    <select id="repairPart" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                <div class="form-group col-md-2">
+                    <label for="repairTax">Sales Tax</label>
+                    <input type="number" class="form-control" id="repairTax">
+                  </div>
+                  <div class="form-group col-md-2">
+                      <label for="repairPartTotal">Part Total</label>
+                      <input type="number" class="form-control" id="repairPartTotal">
+                </div>
+            </div>
+
+
+          </div>
+          <div class="col-md-4">
+
+              <fieldset>
+                  <legend> <div class="ml-sm-2 mr-sm-2 mt-3 mb-sm-0">Labor: $0.00   Parts: $0.00   Consumables: $0.00   FET: $0.00   Sales Tax: $0.00   Total: $0.00</div> </legend>
+              </fieldset>
+                      
+
+
+          </div>
+        </div>
+
+        
+
+
+
+
+      </tab>
+
+      <tab heading="Pictures">
+
+        <div class="margin_bottom_20"></div>
+
+      </tab>
+
+      <!-- <tab heading="Upload">
+            <div class="margin_bottom_20"></div>    
+      </tab> -->
+    
+    </tabset>
+  </div>
+

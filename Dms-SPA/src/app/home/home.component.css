@@ -1,0 +1,18 @@
+
+#boxes img {
+    margin-top: 0px; 
+}
+  
+#boxes .fa {
+    font-size: 25px; 
+}
+
+#boxes .card:hover {
+    background: #6385A0;
+    color: #fff; 
+}
+
+#boxes .card:hover .fa {
+    color: #fff; 
+}
+  

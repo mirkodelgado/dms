@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">New Estimate</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="form-group">
+    <label for="facilityLocation">Facility/Location</label>
+    <select [(ngModel)]="selectedfacilitylocation" name="facilityLocation" id="facilityLocation" class="form-control" (change)="facilitylocationselected()">
+      <option *ngFor="let facilitylocation of facilitylocations" [ngValue]="facilitylocation"> {{ facilitylocation.facilityLocationName }} </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+      <label for="billToClient">Bill To Client</label>
+      <select [(ngModel)]="selectedbillto" name="billToClient" id="billToClient" class="form-control" (change)="billtoselected()">
+        <option *ngFor="let billto of billtos" [ngValue]="billto"> {{ billto.billToClientName }} </option>
+      </select>
+  </div>
+  
+  <div class="form-group">
+        <label for="equipment">Equipment</label>
+        <select [(ngModel)]="selectedequipment" name="equipment" id="equipment" class="form-control" (change)="equipmentselected()">
+            <option *ngFor="let equipmenttype of equipmenttypes" [ngValue]="equipmenttype"> {{ equipmenttype.equipmentName }}</option>
+        </select>
+  </div>
+  
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="startEstimate()">{{ closeBtnName }}</button>
+</div>

@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+
+  <a class="navbar-brand" href="/home"><img class="img-fluid" [src]="'../assets/images/newport_logo.png'"></a>
+      
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]="{ 'show': navbarOpen }">
+      <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/gate']" [routerLinkActive]="['link-active']">Gate</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/repair']" [routerLinkActive]="['link-active']">Repair</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/monitoring']" [routerLinkActive]="['link-active']">Monitoring</a>
+          </li>
+
+          <li *ngIf="!isLoggedIn()" class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['link-active']">Login</a>
+          </li>
+
+          <li *ngIf="isLoggedIn()" class="nav-item">
+            <a class="nav-link" style="cursor:pointer" (click)="logout()">Logout</a>
+          </li>
+
+      </ul>
+      
+      <div class="dropdown" dropdown>
+        <a class="dropdown-toggle" dropdownToggle>
+            Help
+        </a>
+    
+        <div *dropdownMenu class="dropdown-menu mt-3 dropdown-menu-right">
+            <a class="dropdown-item" [routerLink]="['/contact']">
+            Contact</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="openModal(template)">
+            About</a>
+        </div>
+      </div>
+        
+  </div>
+</nav>
+
+<ng-template #template>
+    <div class="modal-header">
+    <h4 class="modal-title pull-left">Depot Management System</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+    <p><strong>Newport Systems - Copyright &copy; 2016 - {{ crDate }}</strong></p> 
+    <p>Version 1.0.0.1 January 1, 2019</p> 
+    </div>
+</ng-template>
